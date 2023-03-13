@@ -8,17 +8,17 @@ module "vpc" {
 }
 
 
-module "eks" {
-  source = "../modules/eks"
-}
+# module "eks" {
+#   source = "../modules/eks"
+# }
 
-module "security-group" {
-  source = "../modules/security-group"
-  }
+# module "security-group" {
+#   source = "../modules/security-group"
+#   }
 
-module "iam" {
-  source = "../modules/iam"
-  }
-module "ec2-instance" {
-  source = "../modules/ec2-instance"
-  }
+# module "iam" {
+#   source = "../modules/iam"
+#   }
+# module "ec2-instance" {
+#   source = "../modules/ec2-instance"
+#   }
