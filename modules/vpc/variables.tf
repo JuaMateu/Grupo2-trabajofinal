@@ -1,24 +1,24 @@
-variable "vpc_name" {
+variable "name" {
   type = string
   description = "value for the 'Name' tag of the VPC"
 }
-variable "vpc_cidr" {
+variable "cidr" {
   type = string
   description = "CIDR block for the VPC"
 }
-variable "vpc_azs" {
+variable "azs" {
   type = list(string)
   description = "Availability Zones for the VPC"
 }
-variable "vpc_private_subnets" {
+variable "private_subnets" {
   type = list(string)
   description = "CIDR blocks for the private subnets"
 }
-variable "vpc_public_subnets" {
+variable "public_subnets" {
   type = list(string)
   description = "CIDR blocks for the public subnets"
 }
-variable "vpc_enable_nat_gateway" {
+variable "enable_nat_gateway" {
   type = bool
   description = "whether to enable NAT gateways for the private subnets"
 }
