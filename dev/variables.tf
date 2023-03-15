@@ -23,3 +23,13 @@ variable "environment" {
   description = "environment name"
   default = "dev"
 }
+
+variable "AWS_SECRET_ACCESS_KEY" {
+  description = "secret aws access key"
+  default = ""
+}
+
+variable "AWS_ACCESS_KEY_ID" {
+  description = "aws acces key ID"
+  default = ""
+}
