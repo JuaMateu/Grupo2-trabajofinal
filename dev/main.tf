@@ -2,33 +2,13 @@ module "vpc" {
   source  = "../modules/vpc"
 
   name = var.vpc_name
-  enable_nat_gateway = true
-  tags = var.tags
-  # cidr = "10.0.0.0/16"
-
-  # azs = ["us-east-1a", "us-east-1b"]
-
-  # private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  # public_subnets  = ["10.0.4.0/24", "10.0.5.0/24"]
-  #permite que las subnet privadas vayan a internet para responder peticiones o actulizar los nodos
-
-  #crea  nat_gateway en todas las subnet privadas para alta disponibilidad
-  # single_nat_gateway = false
-
+  environment = var.environment
 
 }
-
-# module "eks" {
-#   source = "../modules/eks"
-# }
-
-# module "security-group" {
-#   source = "../modules/security-group"
-#   }
-
-# module "iam" {
-#   source = "../modules/iam"
-#   }
 # module "ec2-instance" {
-#   source = "../modules/ec2-instance"
-#   }
+#   source  = "../modules/ec2"
+#   name = "dev-jenkins-ec2"
+#   private_subnets = module.vpc_root.private_subnets_id[0]
+#   security_group         = 
+
+  # }
