@@ -1,7 +1,7 @@
-# variable "vpc_name" {
-#   type = string
-#   description = "value for the 'Name' tag of the VPC"
-# }
+variable "vpc_name" {
+  type = string
+  description = "value for the 'Name' tag of the VPC"
+}
 # variable "vpc_cidr" {
 #   type = string
 #   description = "CIDR block for the VPC"
@@ -23,7 +23,10 @@
 #   description = "environment name"
 #   default = "dev"
 # }
-
+variable "tags" {
+  type = object({Environment=string, Terraform=string})
+  description = "A map of tags to add to all resources"
+}
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "secret aws access key"
   default = ""
