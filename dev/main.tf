@@ -9,7 +9,7 @@
 
 module "vpc" {
   source  = "../modules/vpc"
-  version = "3.19.0"
+
 
   name = "dev-proyecto-vpc"
 
