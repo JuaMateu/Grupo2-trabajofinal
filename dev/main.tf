@@ -1,12 +1,17 @@
 module "vpc" {
-  source = "../modules/vpc"
-  vpc_name = "proyecto-vpc"
-  vpc_cidr = "10.0.0.0/16"
-  vpc_azs = ["us-east-1a", "us-east-1b"]
-  vpc_private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  vpcvpc_public_subnets = ["10.0.4.0/24", "10.0.5.0/24"]
-  vpc_enable_nat_gateway =true
-} 
+  source  = "../modules/vpc"
+
+  name = var.vpc_name
+  environment = var.environment
+
+}
+# module "ec2-instance" {
+#   source  = "../modules/ec2"
+#   name = "dev-jenkins-ec2"
+#   private_subnets = module.vpc_root.private_subnets_id[0]
+#   security_group         = 
+
+  # }
 
 
 
@@ -38,7 +43,6 @@ module "vpc" {
 
   
 #   eks_managed_node_groups = {
- 
 #     green = {
 #       min_size     = 1
 #       max_size     = 3
