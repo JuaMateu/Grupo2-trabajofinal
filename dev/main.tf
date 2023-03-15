@@ -10,7 +10,6 @@
 module "vpc" {
   source  = "../modules/vpc"
 
-
   name = "dev-proyecto-vpc"
 
   cidr = "10.0.0.0/16"
