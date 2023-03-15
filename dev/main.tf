@@ -10,7 +10,7 @@
 module "vpc" {
   source  = "../modules/vpc"
 
-  name = "dev-proyecto-vpc"
+  name = "proyecto-vpc"
 
   cidr = "10.0.0.0/16"
 
@@ -21,12 +21,9 @@ module "vpc" {
   #permite que las subnet privadas vayan a internet para responder peticiones o actulizar los nodos
   enable_nat_gateway = true
   #crea  nat_gateway en todas las subnet privadas para alta disponibilidad
-  single_nat_gateway = false
+  # single_nat_gateway = false
 
-  tags = {
-    Environment = "dev"
-    Terraform   = "true"
-  }
+
 }
 
 # module "eks" {
