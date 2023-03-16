@@ -7,6 +7,10 @@ variable "environment" {
   description = "The name of the environment."
   type        = string
 }
+variable "ec2_name" {
+  description = "The name of the EC2 instance."
+  type        = string
+}
 
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "secret aws access key"
