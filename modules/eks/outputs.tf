@@ -1,0 +1,4 @@
+output "eks_role" { 
+    
+  
+}
