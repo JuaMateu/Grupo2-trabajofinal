@@ -23,7 +23,10 @@ module "ec2-instance" {
 
 module "eks" {
   source       = "../modules/eks"
-  name         = var.eks_name
+  eks_name         = var.eks_name
+  environment = var.environment
+  vpc_id = module.vpc.vpc_id
+  private_subnets = module.vpc.private_subnets
 }
 
 

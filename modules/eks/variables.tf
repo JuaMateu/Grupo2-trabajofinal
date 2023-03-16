@@ -6,3 +6,11 @@ variable "environment" {
   description = "The name of the environment."
   type        = string
 }
+variable "vpc_id" {
+  description = "id of the vpc"
+  type        = string
+}
+variable "private_subnets" {
+  description = "id of the private_subnets"
+  type        = list(string)
+}
