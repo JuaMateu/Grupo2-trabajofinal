@@ -7,24 +7,23 @@ module "vpc" {
 }
 
 module "ec2-instance" {
-  source    = "../modules/ec2"
-  ec2_name  = "dev-jenkins-ec2"
-  subnet_id = module.vpc.private_subnets[0]
-  key_name  = "dev-jenkins-key"
+  source       = "../modules/ec2"
+  ec2_name     = "dev-jenkins-ec2"
+  subnet_id    = module.vpc.private_subnets[0]
+  key_name     = "dev-jenkins-key"
   #traer de modulo security group
   # vpc_security_group_ids = var.ec2_security_group 
-  user_data = <<EOF
+  user_data    = <<EOF
     #!/bin/bash
     echo "Instalacion para servidor de jenkins"
     EOF
   # tags
-  environment = var.environment
+  environment  = var.environment
 }
 
 module "eks" {
-  source = "../modules/eks"
-
-  name = var.eks_name  
+  source       = "../modules/eks"
+  name         = var.eks_name
 }
 
 

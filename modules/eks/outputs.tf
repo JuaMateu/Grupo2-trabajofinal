@@ -1,4 +1,3 @@
-output "eks_role" { 
+# output "eks_role" { 
     
-  
-}
+# }
