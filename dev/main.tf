@@ -1,7 +1,7 @@
 module "vpc" {
-  source  = "../modules/vpc"
-
-  name = var.vpc_name
+  source      = "../modules/vpc"
+  
+  name        = var.vpc_name
   environment = var.environment
 
 }
