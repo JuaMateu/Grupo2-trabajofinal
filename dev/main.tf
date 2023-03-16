@@ -5,6 +5,12 @@ module "vpc" {
   environment = var.environment
 
 }
+
+module "eks" {
+  source = "../modules/eks"
+
+  name = var.eks_name  
+}
 # module "ec2-instance" {
 #   source  = "../modules/ec2"
 #   name = "dev-jenkins-ec2"
