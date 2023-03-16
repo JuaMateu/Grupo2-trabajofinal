@@ -2,14 +2,14 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
-  name = var.ec2name
+  name = var.ec2_name
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = "ami-0557a15b87f6559cf"
   instance_type          = "t2.micro"
-  key_name               = "jenkins-key"
+  key_name               = var.key_name
   
-  vpc_security_group_ids = var.ec2_security_gruop
-  subnet_id              = var.vpc_private_subnet
+  # vpc_security_group_ids = var.vpc_security_group_ids
+  subnet_id              = var.subnet_id
   user_data              = var.user_data
 
   tags = {

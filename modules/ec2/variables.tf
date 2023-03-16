@@ -1,12 +1,16 @@
-variable ec2name {
+variable ec2_name {
     type = string
     description = "ec2 instance name"
 }
-variable ec2_security_gruop {
-    type = list(string)
-    description = "A list of security group IDs to associate with"
+variable "key_name" {
+    description = "The name of a key pair."
+    type        = string
 }
-variable vpc_private_subnet {
+# variable vpc_security_group_ids {
+#     type = list(string)
+#     description = "A list of security group IDs to associate with"
+# }
+variable subnet_id {
     type = string
     description = "The VPC Subnet ID to launch in"
 }

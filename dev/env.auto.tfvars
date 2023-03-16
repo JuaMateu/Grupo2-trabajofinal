@@ -1,5 +1,7 @@
-vpc_name = "dev-vpc-g2"
+vpc_name    = "dev-vpc-g2"
 environment = "dev"
+
+ec2_name = "dev-jenkins-g2"
 
 # vpc_cidr ="10.0.0.0/16"
 # vpc_azs = ["eu-east-1a", "eu-east-1b"]

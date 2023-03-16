@@ -1,5 +1,5 @@
 variable "name" {
-  type = string
+  type        = string
   description = "value for the 'Name' tag of the VPC"
 }
 variable "environment" {

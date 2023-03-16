@@ -5,7 +5,7 @@ module "eks" {
   cluster_name    = "my-cluster"
   cluster_version = "1.24"
 
-  cluster_endpoint_public_access  = true
+  cluster_endpoint_public_access = true
 
   cluster_addons = {
     coredns = {
@@ -20,12 +20,12 @@ module "eks" {
   }
 
   vpc_id                   = "vpc-06000508380c4e80c"
-  subnet_ids               = ["subnet-0df0dfcf66046819e","subnet-0f5f611df2df1a5b2"] #siempre privada
-  control_plane_subnet_ids = ["subnet-0df0dfcf66046819e","subnet-0f5f611df2df1a5b2"] #usar outputs para obtener este valor
+  subnet_ids               = ["subnet-0df0dfcf66046819e", "subnet-0f5f611df2df1a5b2"] #siempre privada
+  control_plane_subnet_ids = ["subnet-0df0dfcf66046819e", "subnet-0f5f611df2df1a5b2"] #usar outputs para obtener este valor
 
-  
+
   eks_managed_node_groups = {
- 
+
     green = {
       min_size     = 1
       max_size     = 3
