@@ -14,3 +14,8 @@ variable "private_subnets" {
   description = "id of the private_subnets"
   type        = list(string)
 }
+
+variable "private_subnets_control_plane" {
+    description = "The private subnets id for the control plane"
+    type = list(string)
+}
