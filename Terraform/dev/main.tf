@@ -13,10 +13,7 @@ module "ec2-instance" {
   key_name     = var.ec2_key_name
   #traer de modulo security group
   # vpc_security_group_ids = var.ec2_security_group 
-  user_data    = <<EOF
-    #!/bin/bash
-    echo "Instalacion para servidor de jenkins"
-    EOF
+  user_data    = "${file("../dockerinstall.sh")}"
   # tags
   environment  = var.environment
 }
