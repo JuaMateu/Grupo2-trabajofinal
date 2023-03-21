@@ -28,6 +28,14 @@ variable "sg_name" {
   description = "value for the 'Name' tag of the Security Group"
   default = "jenkins-security-group"
 }
+variable "AWS_SECRET_ACCESS_KEY" {
+  type        = string
+  default = ""
+}
+variable "AWS_ACCESS_KEY_ID" {
+  type        = string
+  default = ""
+}
 # variable "sg-id" {
 #   type        = string
 #   description = "Security groups's ID"
