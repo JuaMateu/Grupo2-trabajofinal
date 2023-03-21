@@ -32,3 +32,11 @@ variable "sg_name" {
 #   type        = string
 #   description = "Security groups's ID"
 # }
+variable "AWS_SECRET_ACCESS_KEY" {
+  type        = string
+  default = ""
+}
+variable "AWS_ACCESS_KEY_ID" {
+  type        = string
+  default = ""
+}
