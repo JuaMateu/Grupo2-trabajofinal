@@ -21,7 +21,7 @@ module "eks" {
   }
 
   vpc_id                   = var.vpc_id
-  subnet_ids               = var.private_subnets #siempre privada
+  subnet_ids               = var.private_subnets#siempre privada
   control_plane_subnet_ids = var.private_subnets_control_plane #usar outputs para obtener este valor
 
   

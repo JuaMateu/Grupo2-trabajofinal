@@ -1,4 +1,5 @@
 resource "aws_security_group" "main_sg" {
+    
     name        = var.sg_name
     description = "Allow inbound traffic."
     vpc_id      = var.vpc_id

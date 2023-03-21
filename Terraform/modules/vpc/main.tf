@@ -15,6 +15,9 @@ module "vpc" {
   single_nat_gateway = true
   create_igw         = true
 
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
   tags = {
     Terraform   = "true"
     Environment = var.environment

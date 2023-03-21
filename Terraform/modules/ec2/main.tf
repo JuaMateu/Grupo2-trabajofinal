@@ -12,6 +12,9 @@ module "ec2_instance" {
   subnet_id              = var.subnet_id
   user_data              = var.user_data
 
+  vpc_security_group_ids = var.vpc_security_group_ids
+  associate_public_ip_address = true
+
   tags = {
     Terraform   = "true"
     Name        = var.ec2_name
