@@ -9,7 +9,7 @@ module "vpc" {
 module "ec2-instance" {
   source       = "../modules/ec2"
   ec2_name     = "dev-jenkins-ec2"
-  subnet_id    = module.vpc.private_subnets[0]
+  subnet_id    = module.vpc.public_subnets[0]
   key_name     = var.ec2_key_name
 
   vpc_security_group_ids = [module.security-group_ec2.sg-id]
@@ -21,14 +21,14 @@ module "ec2-instance" {
 
 }
 
-module "eks" {
-  source       = "../modules/eks"
-  eks_name         = var.eks_name
-  environment = var.environment
-  vpc_id = module.vpc.vpc_id
-  private_subnets = module.vpc.private_subnets
-  private_subnets_control_plane = module.vpc.private_subnets
-}
+# module "eks" {
+#   source       = "../modules/eks"
+#   eks_name         = var.eks_name
+#   environment = var.environment
+#   vpc_id = module.vpc.vpc_id
+#   private_subnets = module.vpc.private_subnets
+#   private_subnets_control_plane = module.vpc.private_subnets
+# }
 
 module "security-group_ec2" {
     source = "../modules/security-group"
@@ -39,37 +39,37 @@ module "security-group_ec2" {
     sg_name     = var.sg_name
 }
 
-resource "aws_elb" "elb" {
-  name               = "dev-elb"
-  subnets            = module.vpc.private_subnets
-  security_groups    = [module.security-group_ec2.sg-id]
-  listener {
-    instance_port     = 8080
-    instance_protocol = "http"
-    lb_port           = 8080
-    lb_protocol       = "http"
-  }
-    listener {
-    instance_port     = 22
-    instance_protocol = "tcp"
-    lb_port           = 2222
-    lb_protocol       = "tcp"
-  }
-}
+# resource "aws_elb" "elb" {
+#   name               = "dev-elb"
+#   subnets            = module.vpc.private_subnets
+#   security_groups    = [module.security-group_ec2.sg-id]
+#   listener {
+#     instance_port     = 8080
+#     instance_protocol = "http"
+#     lb_port           = 8080
+#     lb_protocol       = "http"
+#   }
+#     listener {
+#     instance_port     = 22
+#     instance_protocol = "tcp"
+#     lb_port           = 2222
+#     lb_protocol       = "tcp"
+#   }
+# }
 
-resource "aws_security_group" "sg-elb" {
-  name_prefix = "elb-"
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+# resource "aws_security_group" "sg-elb" {
+#   name_prefix = "elb-"
+#   ingress {
+#     from_port   = 8080
+#     to_port     = 8080
+#     protocol    = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+# }
 
-resource "aws_elb_attachment" "ec2attachment" {
-  elb               = aws_elb.elb.id
-  instance         = module.ec2-instance.jenkins-id
+# resource "aws_elb_attachment" "ec2attachment" {
+#   elb               = aws_elb.elb.id
+#   instance         = module.ec2-instance.jenkins-id
 
-}
+# }
 
