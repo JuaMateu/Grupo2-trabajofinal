@@ -21,14 +21,14 @@ module "ec2-instance" {
 
 }
 
-# module "eks" {
-#   source       = "../modules/eks"
-#   eks_name         = var.eks_name
-#   environment = var.environment
-#   vpc_id = module.vpc.vpc_id
-#   private_subnets = module.vpc.private_subnets
-#   private_subnets_control_plane = module.vpc.private_subnets
-# }
+module "eks" {
+  source       = "../modules/eks"
+  eks_name         = var.eks_name
+  environment = var.environment
+  vpc_id = module.vpc.vpc_id
+  public_subnets = module.vpc.public_subnets
+  public_subnets_control_plane = module.vpc.public_subnets
+}
 
 module "security-group_ec2" {
     source = "../modules/security-group"
