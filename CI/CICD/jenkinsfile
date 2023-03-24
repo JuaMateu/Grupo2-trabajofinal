@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stage {
+        stage( "get repo" ){
+            sh 'git clone https://github.com/edgaregonzalez/app-devops-bootcamp.git'
+        }
+    
+        stage('Build') {
+            steps {
+                sh 'rpm install'
+                sh 'npm run build'
+                echo 'Building..'
+            }
+        }
+    
+        stage('Deploy') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'nombre_de_la_credencial', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                sh "docker login -u $(USERNAME) -p $(PASSWRD)" 
+                sh "docker build -t ''/api-store:lts"
+                sh "docker push ''/api-store:lts"
+                sh "kubectl apply -f apply deployment.yaml"
+                echo 'Deploying....'
+            }
+            }
+        }
+    }
+}

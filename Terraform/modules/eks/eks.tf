@@ -21,8 +21,8 @@ module "eks" {
   }
 
   vpc_id                   = var.vpc_id
-  subnet_ids               = var.public_subnets #cambio a public subnet
-  control_plane_subnet_ids = var.public_subnets_control_plane #usar outputs para obtener este valor
+  subnet_ids               = var.private_subnets #cambio a public subnet
+  control_plane_subnet_ids = var.private_subnets_control_plane #usar outputs para obtener este valor
 
   
   eks_managed_node_groups = {

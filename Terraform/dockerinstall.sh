@@ -13,6 +13,6 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 git clone https://github.com/JuaMateu/Grupo2-trabajofinal.git
-cd Grupo2-trabajofinal/jenkins
-sudo docker compose up --detach
-sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword > ~/jenkinsInitialCredentials.txt
+cd Grupo2-trabajofinal/CICD
+sudo docker compose up -d
+
