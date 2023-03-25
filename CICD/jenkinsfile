@@ -13,7 +13,7 @@ pipeline {
  
         stage('install') {
             steps {
-              dir('api-store') {
+              dir('app-devops-bootcamp/api-store') {
                 sh 'npm install'
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
         
           stage('Build') {
             steps {
-              dir('api-store') {
+              dir('app-devops-bootcamp/api-store') {
                 sh 'npm run build'
                 }
             }
