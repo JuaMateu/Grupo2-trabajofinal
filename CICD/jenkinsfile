@@ -5,11 +5,6 @@ pipeline {
     }
     
     stages {
-           stage('get repo'){
-            steps {
-            sh 'git clone https://github.com/edgaregonzalez/app-devops-bootcamp.git'
-            }
-        }
         stage('Build') {
             steps {
               dir(' app-devops-bootcamp/api-store'){
