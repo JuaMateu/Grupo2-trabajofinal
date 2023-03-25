@@ -26,14 +26,14 @@ variable "eks_name" {
 variable "sg_name" {
   type        = string
   description = "value for the 'Name' tag of the Security Group"
-  default = "jenkins-security-group"
+  default     = "jenkins-security-group"
 }
 variable "AWS_SECRET_ACCESS_KEY" {
-  type        = string
+  type    = string
   default = ""
 }
 variable "AWS_ACCESS_KEY_ID" {
-  type        = string
+  type    = string
   default = ""
 }
 # variable "sg-id" {

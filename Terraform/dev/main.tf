@@ -15,20 +15,19 @@ module "ec2-instance" {
   vpc_security_group_ids = [module.security-group_ec2.sg-id]
   #traer de modulo security group
   # vpc_security_group_ids = var.ec2_security_group 
-  user_data    = "${file("../dockerinstall.sh")}"
+  user_data = file("../dockerinstall.sh")
   # tags
   environment  = var.environment
+  }
 
-}
-
-module "eks" {
-  source       = "../modules/eks"
-  eks_name         = var.eks_name
-  environment = var.environment
-  vpc_id = module.vpc.vpc_id
-  private_subnets = module.vpc.private_subnets
-  private_subnets_control_plane = module.vpc.private_subnets
-}
+#  module "eks" {
+#    source       = "../modules/eks"
+#    eks_name         = var.eks_name
+#    environment = var.environment
+#    vpc_id = module.vpc.vpc_id
+#    private_subnets = module.vpc.private_subnets
+#    private_subnets_control_plane = module.vpc.private_subnets
+#  }
 
 module "security-group_ec2" {
     source = "../modules/security-group"
