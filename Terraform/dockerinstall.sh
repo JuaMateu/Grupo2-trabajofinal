@@ -14,5 +14,5 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 sudo git clone https://github.com/JuaMateu/Grupo2-trabajofinal.git
-sudo mv /Grupo2-trabajofinal/Jenkins/docker-compose.yaml .
+sudo mv /Grupo2-trabajofinal/CIDI/docker-compose.yaml .
 sudo docker compose up -d
