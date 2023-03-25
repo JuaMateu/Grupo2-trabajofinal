@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              dir('api-store'){
+              dir('app-devops-bootcamp/api-store') {
                 sh 'npm install'
                 sh 'npm run build'
                 echo 'Building..'
