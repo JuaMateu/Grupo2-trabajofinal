@@ -9,8 +9,14 @@ pipeline {
             steps {
               dir('api-store') {
                 sh 'npm install'
+                }
+            }
+        }
+        
+          stage('Build') {
+            steps {
+              dir('api-store') {
                 sh 'npm run build'
-                echo 'Building..'
                 }
             }
         }
@@ -21,7 +27,6 @@ pipeline {
                 sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
                 sh 'docker build -t  ${USERNAME}/api-store:lts'
                 sh 'docker push  ${USERNAME}/api-store:lts'
-                echo 'Deploying....'
             }
             }
         }
