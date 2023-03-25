@@ -12,11 +12,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-            
+              dir(' app-devops-bootcamp/api-store'){
                 sh 'npm install'
                 sh 'npm run build'
                 echo 'Building..'
-                
+               } 
             }
         }
     
