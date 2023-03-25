@@ -3,9 +3,15 @@ pipeline {
     tools {
         nodejs "node"
     }
-    
-    stages {
-        stage('Build') {
+        stages {
+        
+           stage('get repo'){
+            steps {
+            sh 'git clone https://github.com/edgaregonzalez/app-devops-bootcamp.git'
+                }
+            }
+ 
+        stage('install') {
             steps {
               dir('api-store') {
                 sh 'npm install'
