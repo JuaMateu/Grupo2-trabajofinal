@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nombre_de_la_credencial', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                sh "docker login -u $(USERNAME) -p $(PASSWRD)" 
+                sh "docker login -u ${USERNAME} -p ${PASSWORD}" 
                 sh "docker build -t ''/api-store:lts"
                 sh "docker push ''/api-store:lts"
                 sh "kubectl apply -f apply deployment.yaml"
