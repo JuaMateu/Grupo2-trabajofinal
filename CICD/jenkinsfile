@@ -2,7 +2,9 @@ pipeline {
     agent any
     stage {
         stage( 'get repo' ){
+         steps {
             sh 'git clone https://github.com/edgaregonzalez/app-devops-bootcamp.git'
+            }
         }
     
         stage('Build') {
