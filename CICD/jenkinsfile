@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stage {
-        stage( 'get repo' ){
+        stage('get repo'){
          steps {
             sh 'git clone https://github.com/edgaregonzalez/app-devops-bootcamp.git'
             }
@@ -21,7 +21,6 @@ pipeline {
                 sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
                 sh 'docker build -t  ${USERNAME}/api-store:lts'
                 sh 'docker push  ${USERNAME}/api-store:lts'
-                sh 'kubectl apply -f apply deployment.yaml'
                 echo 'Deploying....'
             }
             }
