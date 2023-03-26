@@ -7,7 +7,7 @@ pipeline {
         
            stage('get repo'){
             steps {
-            sh 'git clone https://github.com/edgaregonzalez/app-devops-bootcamp.git'
+            sh 'git clone https://github.com/Federicofs/app-devops-bootcamp.git'
                 }
             }
  
@@ -29,7 +29,7 @@ pipeline {
     
         stage('Deploy') {
             steps {
-            dir('app-devops-bootcamp/api-store'){
+            dir('app-devops-bootcamp'){
             withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                 sh 'docker login -u ${USERNAME} -p ${PASSWRD}'
                 sh 'docker build -t ${USERNAME}/api-store:lts'
