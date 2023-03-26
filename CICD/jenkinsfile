@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                sh "docker login --username ${USERNAME} --password ${PASSWRD} 
+                sh 'docker login --username ${USERNAME} --password ${PASSWRD}'
                 sh 'docker build -t  ${USERNAME}/api-store:lts'
                 sh 'docker push  ${USERNAME}/api-store:lts'
             }
