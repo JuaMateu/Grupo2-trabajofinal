@@ -29,7 +29,9 @@ pipeline {
     
         stage('Deploy') {
             steps {
+            dir('app-devops-bootcamp/api-store'){
                 sh 'docker build -t api-store:lts .'
+                }
             }
         }
     }
