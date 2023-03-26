@@ -34,11 +34,10 @@ pipeline {
                 sh 'docker login -u ${USERNAME} -p ${PASSWRD}'
                 sh 'docker build -t ${USERNAME}/api-store:lts'
                 sh 'docker push ${USERNAME}/api-store:lts .'
-                //sh 'kubectl apply -f apply deployment.yaml'
                 echo 'Deploying....'
+                    }
                 }
             }
         }
     }
-}
 }
