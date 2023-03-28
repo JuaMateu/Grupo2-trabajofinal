@@ -3,38 +3,45 @@ pipeline {
     tools {
         nodejs "node"
     }
-        stages {
+    stages {
         
-           stage('get repo'){
+       stage('get repo'){
             steps {
-            sh 'git clone https://github.com/Federicofs/app-devops-bootcamp.git'
-                }
+                sh 'git clone https://github.com/Federicofs/app-devops-bootcamp.git'
             }
+        }
  
         stage('install') {
             steps {
-              dir('app-devops-bootcamp/api-store') {
-                sh 'npm install'
-                }
+                dir('app-devops-bootcamp/api-store') {
+                    sh 'npm install'
+                }  
             }
         }
         
-          stage('Build') {
+        stage('Build') {
             steps {
-              dir('app-devops-bootcamp/api-store') {
-                sh 'npm run build'
+                dir('app-devops-bootcamp/api-store') {
+                    sh 'npm run build'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir('app-devops-bootcamp/api-store'){
+                    sh 'npm run test'
                 }
             }
         }
     
         stage('Deploy') {
             steps {
-            dir('app-devops-bootcamp'){
-            withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
-                sh 'docker build -t ${USERNAME}/api-store:lts'
-                sh 'docker push ${USERNAME}/api-store:lts .'
-                //echo 'Deploying....'
+                dir('app-devops-bootcamp'){
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
+                        sh 'docker build -t ${USERNAME}/api-store:lts'
+                        sh 'docker push ${USERNAME}/api-store:lts .'
+                        //echo 'Deploying....'
                     }
                 }
             }
