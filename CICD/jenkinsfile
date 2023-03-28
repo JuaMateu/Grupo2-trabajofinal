@@ -39,8 +39,8 @@ pipeline {
                 dir('app-devops-bootcamp/api-store'){
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh 'docker login -u ${USERNAME} -p ${PASSWORD}  '
-                        sh 'docker build -t ${USERNAME}/api-store:lts .'
-                        sh 'docker push ${USERNAME}/api-store:lts'
+                        sh 'docker build -t ${USERNAME}/api-store:1-2 .'
+                        sh 'docker push ${USERNAME}/api-store:1-2'
                     }
                 }
             }
