@@ -5,13 +5,13 @@ pipeline {
     }
     stages {
         
-       stage('get repo'){
+       stage('Get repo'){
             steps {
                 sh 'git clone https://github.com/Federicofs/app-devops-bootcamp.git'
             }
         }
  
-        stage('install') {
+        stage('Install') {
             steps {
                 dir('app-devops-bootcamp/api-store') {
                     sh 'npm install'
@@ -38,10 +38,9 @@ pipeline {
             steps {
                 dir('app-devops-bootcamp'){
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
-                        sh 'docker build -t ${USERNAME}/api-store:lts'
-                        sh 'docker push ${USERNAME}/api-store:lts .'
-                        //echo 'Deploying....'
+                        sh 'docker build -t ${USERNAME}/api-store:lts .'
+                        sh 'docker login -u ${USERNAME} -p ${PASSWORD}  '
+                        sh 'docker push ${USERNAME}/api-store:lts'
                     }
                 }
             }
