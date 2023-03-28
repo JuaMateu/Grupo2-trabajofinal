@@ -36,7 +36,7 @@ pipeline {
     
         stage('Deploy') {
             steps {
-                dir('app-devops-bootcamp'){
+                dir('app-devops-bootcamp/api-store'){
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh 'docker build -t ${USERNAME}/api-store:lts .'
                         sh 'docker login -u ${USERNAME} -p ${PASSWORD}  '
