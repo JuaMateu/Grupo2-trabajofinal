@@ -10,7 +10,7 @@ pipeline {
                 sh 'git clone https://github.com/Federicofs/app-devops-bootcamp.git'
             }
         }
- 
+
         stage('Install') {
             steps {
                 dir('app-devops-bootcamp/api-store') {
@@ -18,7 +18,7 @@ pipeline {
                 }  
             }
         }
-        
+
         stage('Build') {
             steps {
                 dir('app-devops-bootcamp/api-store') {
@@ -26,6 +26,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Test') {
             steps {
                 dir('app-devops-bootcamp/api-store'){
@@ -37,13 +38,18 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('app-devops-bootcamp/api-store'){
-                    withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        sh 'docker login -u ${USERNAME} -p ${PASSWORD}  '
-                        sh 'docker build -t ${USERNAME}/api-store:1-2 .'
-                        sh 'docker push ${USERNAME}/api-store:1-2'
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER_ID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {                     
+                        sh 'docker login -u ${USERNAME} -p ${PASSWORD} ' 
+                        sh 'docker build -t ${USERNAME}/api-store:1.2 .'
+                        sh 'docker push ${USERNAME}/api-store:1.2'
                     }
                 }
             }
         }
     }
 }
+post {
+    always {
+      sh 'docker logout'
+    }
+} 
