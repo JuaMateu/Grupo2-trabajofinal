@@ -19,18 +19,22 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps{
+                dir('app-devops-bootcamp/api-store') {
+                    sh 'npm audit'
+                    script{
+                            properties($class: 'GithubProjectProperty',
+                            projectUrlStr: 'https://github.com/Federicofs/app-devops-bootcamp.git')
+                    }
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 dir('app-devops-bootcamp/api-store') {
                     sh 'npm run build'
-                }
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                dir('app-devops-bootcamp/api-store'){
-                    sh 'npm run test'
                 }
             }
         }
@@ -47,9 +51,12 @@ pipeline {
             }
         }
     }
-}
-post {
+    post {
     always {
       sh 'docker logout'
-    }
-} 
+      deleteDir()
+                  step([$class: 'GitHubIssueNotifier',
+               issueAppend: true, issueTitle: 'Demo', issueLabel: 'security'])
+        }
+    } 
+}
