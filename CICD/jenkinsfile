@@ -55,8 +55,10 @@ pipeline {
     always {
       sh 'docker logout'
       deleteDir()
+    }
+        failure{
                   step([$class: 'GitHubIssueNotifier',
-               issueAppend: true, issueTitle: 'Demo', issueLabel: 'security'])
+               issueAppend: true, issueTitle: 'security', issueLabel: 'security'])
         }
-    } 
+    }
 }
